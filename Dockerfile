@@ -4,7 +4,7 @@ MAINTAINER Lorenzo Lince<lorenzolince@gmail.com>
 RUN apk add --update netcat-openbsd && rm -rf /var/cache/apk/*
 RUN apk add --no-cache cifs-utils
 COPY target/*.jar /app.jar
-RUN mkdir -p /app/lopa/ppk
+RUN mkdir /app
 RUN echo "/bin/sh -c " > entrypoint.sh
 RUN echo "java \$API_JAVA_OPTION -jar /app.jar" >> entrypoint.sh
 RUN adduser -s /bin/true -u 1000 -D -h /app app \
@@ -16,5 +16,5 @@ RUN adduser -s /bin/true -u 1000 -D -h /app app \
   && chmod 755 entrypoint.sh
 USER app
 RUN cat entrypoint.sh
-EXPOSE 8080 8789
+EXPOSE 8084 8789
 CMD /bin/sh ./entrypoint.sh
