@@ -16,5 +16,5 @@ RUN adduser -s /bin/true -u 1000 -D -h /app app \
   && chmod 755 entrypoint.sh
 USER app
 RUN cat entrypoint.sh
-EXPOSE 8084 8789
+EXPOSE 8443 8789
 CMD /bin/sh ./entrypoint.sh
